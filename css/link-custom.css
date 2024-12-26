@@ -1,0 +1,237 @@
+.link-html {
+    min-height: 100%;
+}
+
+.link-body {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    min-height: 100%;
+}
+
+.link-content {
+    padding-top: 2rem;
+}
+
+.link-image {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.link-verified {
+    color: #3897F0;
+}
+
+.link-btn {
+    white-space: normal;
+    word-wrap: break-word;
+    padding: 1rem 1rem;
+    font-size: 1.1rem;
+    box-shadow: 0px 0px 20px #00000010;
+    border: 0;
+    transition: opacity 0.3s, background 0.3s;
+    border-radius: 0;
+}
+
+.link-btn:hover {
+    animation: none;
+}
+
+.link-btn-round {
+    border-radius: .3rem;
+}
+
+.link-btn-rounded {
+    border-radius: 50px;
+}
+
+.link-iframe-round {
+    border-radius: .3rem;
+    overflow:hidden;
+    position:relative;
+}
+
+.link-footer {
+    margin-top: 3rem;
+    font-size: .9rem;
+}
+
+/* Background presets */
+.link-body-background-one {
+    background-image: linear-gradient(111.7deg, #a529b9 19.9%, #50b1e1 95%);
+}
+
+.link-body-background-two {
+    background-image: linear-gradient(109.6deg, #ffb418 11.2%, #f73131 91.1%);
+}
+
+.link-body-background-three {
+    background-image: linear-gradient(135deg, #79F1A4 10%, #0E5CAD 100%);
+}
+
+.link-body-background-four {
+    background-image: linear-gradient(to bottom, #ff758c, #ff7eb3);
+}
+
+.link-body-background-five {
+    background-image: linear-gradient(292.2deg, #3355ff 33.7%, #0088ff 93.7%);
+}
+
+/* Separador Types */
+.link-separador-body-one {
+    background-image: url("../images/one.png");
+    background-size: contain;
+}
+
+.link-separador-body-two {
+    background-image: url("../images/two.png");
+    background-size: contain;
+}
+
+.link-separador-body-three {
+    background-image: url("../images/three.png");
+    background-size: contain;
+}
+
+.link-separador-body-four {
+    background-image: url("../images/four.png");
+    background-size: contain;
+}
+
+.link-separador-body-five {
+    background-image: url("../images/five.png");
+    background-size: contain;
+}
+
+.link-separador-body-six {
+    background-image: url("../images/six.png");
+    background-size: contain;
+}
+
+.separador{
+    display: table;
+    font-size: 13px;
+    text-align: center;
+    width: 75%;
+    margin: 40px auto;
+}
+
+.separador span{
+    display: table-cell;
+    position: relative;
+}
+
+.separador span:first-child, .separador span:last-child{
+    width: 50%;
+    top: 10px;
+    -moz-background-size: 100% 2px;
+    background-size: 100% 2px;
+    background-position: 0 0, 0 100%;
+    background-repeat: no-repeat;
+    
+}
+
+.separador span:nth-child(2){
+    width: auto;
+    padding: 0px 5px;
+    white-space: nowrap;
+}
+
+.separador-icon{
+    width: 10px;
+    height: 10px;
+}
+
+
+
+
+/* Headers Text Style */
+
+.text-style-box{
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 2px;
+    background-color: #FFF;
+    box-shadow: 0 0px 2px #AAA;
+    color: #222;
+    -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   margin-right: 2px;
+   cursor: pointer;
+}
+
+.h-align{
+    width: 25px !important;
+    padding: 0 5px;
+}
+
+.text-style-bold{
+    font-weight: bold;
+
+}
+
+.text-style-italic{
+    font-style: italic;
+}
+
+.text-style-sub{
+    text-decoration: underline;
+
+}
+
+.text_style_check:checked + .text-style-box{
+    background-color: #EEE;
+    box-shadow: none;
+}
+
+.header_style_h{
+    word-wrap: break-word;
+    font-style: normal;
+    font-weight: 400;
+    color: white;
+}
+
+.header_style_bold{
+    font-weight: bold;
+}
+.header_style_italic{
+    font-style: italic;
+}
+.header_style_sub{
+    text-decoration: underline;
+}
+
+/* Formulario */
+
+.formulario-label{
+    margin: 0 !important;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+}
+
+.formulario-style{
+    font-size: 18px;
+    /* font-weight: bold; */
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-formulario{
+    background: white;
+    font-weight: bold;
+    height: 60px;
+    margin-top: 15px;
+    transition: opacity 0.5s;
+}
+
+.btn-formulario:hover{
+    opacity: 0.8;
+}
